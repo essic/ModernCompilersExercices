@@ -26,15 +26,18 @@ data Stm = CompoundStm (Stm,Stm)
   | AssignStm (Id,Exp)
   | PrintStm [Exp]
 
+lShow :: S.Show a => a -> LText
+lShow = toSL . S.show
+
 instance S.Show Stm where
-  show (AssignStm (v, e)) = toS $ F.format (F.text F.% " := " F.% F.text) (toS v) (show e)
+  show (AssignStm (v, e)) = toS $ F.format (F.text F.% " := " F.% F.text) (toS v) (lShow e)
   show (PrintStm xe) = toS $ F.format ( "print (" F.% F.text F.% ")") (showArgs xe)
     where
       showArgs :: [Exp] -> LText
       showArgs [e] = show e
-      showArgs x = foldl1 (F.format ( F.text F.% "," F.% F.text)) $ map (toSL . S.show) x
+      showArgs x = foldl1 (F.format ( F.text F.% "," F.% F.text)) $ map lShow x
   show (CompoundStm (s1,s2)) =
-    toS $ F.format (F.text F.% " ; " F.% F.text ) (show s1) (show s2)
+    toS $ F.format (F.text F.% " ; " F.% F.text ) (lShow s1) (lShow s2)
 
 data Exp = IdExp Id
   | NumExp Int
@@ -44,8 +47,8 @@ data Exp = IdExp Id
 instance S.Show Exp where
   show (IdExp v) = toS v
   show (NumExp v) = show v
-  show (OpExp (v1,op,v2)) = toS $ F.format ( "" F.% F.text F.% F.text F.% F.text ) (toSL $ S.show v1) (toSL $ S.show op) (toSL $ S.show v2)
-  show (EseqExp (s,e)) = toS $ F.format ( "( " F.% F.text F.% " , " F.% F.text F.% " ) ") (toSL $ S.show s) (toSL $ S.show e)
+  show (OpExp (v1,op,v2)) = toS $ F.format ( "" F.% F.text F.% F.text F.% F.text ) (lShow v1) (lShow op) (lShow v2)
+  show (EseqExp (s,e)) = toS $ F.format ( "( " F.% F.text F.% " , " F.% F.text F.% " ) ") (lShow s) (lShow e)
 
 maxargs :: Stm -> Int
 maxargs statement =
