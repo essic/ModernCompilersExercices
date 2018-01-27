@@ -59,15 +59,10 @@ maxargs statement =
       case s of
         AssignStm (_,e') -> getListOfAllPrintStmExpFromExp e'
         PrintStm xs' -> [length xs']
-        CompoundStm (s1',s2') -> count
-          [getListOfAllPrintStmExp s1', getListOfAllPrintStmExp s2']
+        CompoundStm (s1',s2') -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExp s2'
     getListOfAllPrintStmExpFromExp :: Exp -> [Int]
     getListOfAllPrintStmExpFromExp e =
       case e of
-        OpExp (e1', _, e2') -> count
-          [getListOfAllPrintStmExpFromExp e1', getListOfAllPrintStmExpFromExp e2']
-        EseqExp (s1', e1') -> count
-          [getListOfAllPrintStmExp s1', getListOfAllPrintStmExpFromExp e1']
+        OpExp (e1', _, e2') -> getListOfAllPrintStmExpFromExp e1' ++ getListOfAllPrintStmExpFromExp e2'
+        EseqExp (s1', e1') -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExpFromExp e1'
         _ -> [0]
-    count :: [[a]] -> [Int]
-    count = map length
