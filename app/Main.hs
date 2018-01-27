@@ -1,7 +1,7 @@
 module Main where
 
-import Protolude
-import Ch01.Introduction
+import           Mci.StraightLine.Syntax
+import           Protolude
 
 prog :: Stm
 prog =

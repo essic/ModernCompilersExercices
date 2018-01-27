@@ -1,13 +1,6 @@
-module Ch01.Introduction (
-  Id
-  ,Binop (..)
-  ,Stm (..)
-  ,Exp (..)
-  ,maxargs
-)
-  where
+module Mci.StraightLine.Syntax where
 
-import           Lib.Prelude
+import           Mci.Prelude
 import qualified GHC.Show as S
 import qualified Formatting as F
 import Data.Foldable
@@ -15,7 +8,6 @@ import Data.Foldable
 type Id = Text
 
 data Binop = Plus | Minus | Times | Div
-
 instance Show Binop where
   show Plus = "+"
   show Minus = "-"
