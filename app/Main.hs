@@ -1,5 +1,6 @@
 module Main where
 
+import           Mci.StraightLine.PrettyPrint
 import           Mci.StraightLine.Syntax
 import           Protolude
 
@@ -14,6 +15,6 @@ prog =
 main :: IO ()
 main = do
   putText "Evaluate max occurence of print statement in :"
-  putText . show $ prog
+  putText . prettyStm $ prog
   putText "is ..."
   putText . show $ maxargs prog
