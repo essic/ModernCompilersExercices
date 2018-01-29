@@ -1,3 +1,4 @@
+{-# LANGUAGE LambdaCase #-}
 module Mci.StraightLine.PrettyPrint where
 
 import           Data.Foldable           (foldl1)
@@ -28,8 +29,8 @@ prettyExpSL (EseqExp (stm,expr)) =
   F.format ( "( " F.% F.text F.% " , " F.% F.text F.% " ) ") (prettyStmSL stm) (prettyExpSL expr)
 
 prettyBinOpSL :: Binop -> LText
-prettyBinOpSL op =
-  case op of
+prettyBinOpSL =
+  \case
     Plus  -> "+"
     Minus -> "-"
     Times -> "*"

@@ -1,3 +1,4 @@
+{-# LANGUAGE LambdaCase #-}
 module Mci.StraightLine.Syntax where
 
 import           Data.Foldable
@@ -21,14 +22,14 @@ maxargs statement =
   foldl max 0 $ getListOfAllPrintStmExp statement
   where
     getListOfAllPrintStmExp :: Stm -> [Int]
-    getListOfAllPrintStmExp s =
-      case s of
+    getListOfAllPrintStmExp =
+      \case
         AssignStm (_,e') -> getListOfAllPrintStmExpFromExp e'
         PrintStm xs' -> [length xs']
         CompoundStm (s1',s2') -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExp s2'
     getListOfAllPrintStmExpFromExp :: Exp -> [Int]
-    getListOfAllPrintStmExpFromExp e =
-      case e of
+    getListOfAllPrintStmExpFromExp =
+      \case
         OpExp (e1', _, e2') -> getListOfAllPrintStmExpFromExp e1' ++ getListOfAllPrintStmExpFromExp e2'
         EseqExp (s1', e1') -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExpFromExp e1'
         _ -> [0]
