@@ -4,7 +4,7 @@ import qualified Formatting                   as F
 import           Mci.StraightLine.PrettyPrint
 import           Mci.StraightLine.Syntax
 import           Protolude
-import Mci.StraightLine.Types
+import           Mci.StraightLine.Types
 import qualified Data.Map.Strict as Map
 import qualified Control.Monad.State.Strict as State
 

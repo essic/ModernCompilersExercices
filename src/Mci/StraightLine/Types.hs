@@ -2,7 +2,7 @@
 {-# LANGUAGE DeriveFoldable #-}
 {-# LANGUAGE DeriveFunctor #-}
 module Mci.StraightLine.Types where
-import  Mci.Prelude
+import           Mci.Prelude
 import qualified Data.Map.Strict as Map
 
 

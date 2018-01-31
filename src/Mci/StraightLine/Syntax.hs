@@ -5,8 +5,8 @@
 module Mci.StraightLine.Syntax where
 
 import           Data.Foldable
-import  Mci.Prelude
-import Mci.StraightLine.Types
+import           Mci.Prelude
+import           Mci.StraightLine.Types
 import qualified Data.Map.Strict as Map
 
 
