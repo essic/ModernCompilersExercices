@@ -19,6 +19,7 @@ library
   exposed-modules:     Mci.StraightLine.Syntax
                        , Mci.StraightLine.PrettyPrint
                        , Mci.StraightLine.Interpretor
+                       , Mci.StraightLine.Utils
   other-modules:       Mci.Prelude
   build-depends:       base >= 4.7 && < 5
                      , protolude >= 0.1.6 && < 0.2

@@ -3,6 +3,7 @@ module Main where
 import           Mci.StraightLine.Interpretor
 import           Mci.StraightLine.PrettyPrint
 import           Mci.StraightLine.Syntax
+import           Mci.StraightLine.Utils
 import           Protolude
 
 prog :: Stm
@@ -34,4 +35,5 @@ smallTest = do
   putText . show $ maxargs prog
 
 main :: IO ()
-main = interp prog >> interp prog2 >> smallTest
+main =
+  interp prog >> interp prog2 >> smallTest
