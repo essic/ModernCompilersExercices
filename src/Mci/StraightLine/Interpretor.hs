@@ -34,15 +34,13 @@ interpStm (AssignStm(id,expr),t) = do
       Table $ e : unwrap t'
 
 interpStm (PrintStm xs, t) =
-  foldl' f (init t) xs
+  foldl' f (pure t) xs
   where
     f :: IO Table -> Exp -> IO Table
     f t' e = do
       t1 <- t'
       (val,t1') <- interpExp (e,t1)
       putText (show val) >> pure t1'
-    init :: Table -> IO Table
-    init = pure
 
 interpExp :: (Exp, Table) -> IO (Int, Table)
 
