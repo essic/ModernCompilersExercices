@@ -7,15 +7,24 @@ import           Protolude
 
 prog :: Stm
 prog =
- CompoundStm(AssignStm("a",OpExp(NumExp 5, Plus, NumExp 3)),
-  CompoundStm(AssignStm("b",
-      EseqExp(PrintStm[IdExp"a",OpExp(IdExp"a", Minus,NumExp 1)],
-           OpExp(NumExp 10, Times, IdExp"a"))),
-   PrintStm[IdExp "b"]))
+ CompoundStm
+  (AssignStm "a" (OpExp (NumExp 5) Plus (NumExp 3)))
+  (
+    CompoundStm
+    (AssignStm
+     "b"
+     (
+       EseqExp
+       (PrintStm [IdExp"a",OpExp (IdExp "a") Minus (NumExp 1)])
+       (OpExp (NumExp 10) Times (IdExp"a"))
+     )
+    )
+  (PrintStm[IdExp "b"])
+  )
 
 prog2 :: Stm
 prog2 =
-  PrintStm [OpExp(NumExp 10,Div, NumExp 2)]
+  PrintStm [OpExp (NumExp 10) Div (NumExp 2)]
 
 smallTest :: IO ()
 smallTest = do

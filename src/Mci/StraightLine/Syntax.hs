@@ -8,14 +8,14 @@ type Id = Text
 
 data Binop = Plus | Minus | Times | Div
 
-data Stm = CompoundStm (Stm,Stm)
-  | AssignStm (Id,Exp)
+data Stm = CompoundStm Stm Stm
+  | AssignStm Id Exp
   | PrintStm [Exp]
 
 data Exp = IdExp Id
   | NumExp Int
-  | OpExp (Exp, Binop, Exp)
-  | EseqExp (Stm, Exp)
+  | OpExp Exp Binop Exp
+  | EseqExp Stm Exp
 
 maxargs :: Stm -> Int
 maxargs statement =
@@ -24,14 +24,14 @@ maxargs statement =
     getListOfAllPrintStmExp :: Stm -> [Int]
     getListOfAllPrintStmExp =
       \case
-        AssignStm (_,e') -> getListOfAllPrintStmExpFromExp e'
+        AssignStm _ e' -> getListOfAllPrintStmExpFromExp e'
         PrintStm xs' -> [length xs']
-        CompoundStm (s1',s2') -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExp s2'
+        CompoundStm s1' s2' -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExp s2'
     getListOfAllPrintStmExpFromExp :: Exp -> [Int]
     getListOfAllPrintStmExpFromExp =
       \case
-        OpExp (e1', _, e2') -> getListOfAllPrintStmExpFromExp e1' ++ getListOfAllPrintStmExpFromExp e2'
-        EseqExp (s1', e1') -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExpFromExp e1'
+        OpExp e1' _ e2' -> getListOfAllPrintStmExpFromExp e1' ++ getListOfAllPrintStmExpFromExp e2'
+        EseqExp s1' e1' -> getListOfAllPrintStmExp s1' ++ getListOfAllPrintStmExpFromExp e1'
         _ -> [0]
 
  
