@@ -20,7 +20,8 @@ library
                        , Mci.StraightLine.PrettyPrint
                        , Mci.StraightLine.Interpretor
                        , Mci.StraightLine.Utils
-  other-modules:       Mci.Prelude
+  other-modules:        Mci.Prelude
+                       ,Mci.StraightLine.Exercices
   build-depends:       base >= 4.7 && < 5
                      , protolude >= 0.1.6 && < 0.2
                      , formatting
