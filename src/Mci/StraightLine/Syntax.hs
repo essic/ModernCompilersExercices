@@ -1,7 +1,4 @@
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE DeriveFunctor #-}
-{-# LANGUAGE LambdaCase    #-}
-{-# LANGUAGE ScopedTypeVariables #-}
 module Mci.StraightLine.Syntax where
 
 import           Data.Foldable
