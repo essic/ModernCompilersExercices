@@ -1,5 +1,6 @@
 module Main where
 
+import           Mci.StraightLine.Interpretor
 import           Mci.StraightLine.PrettyPrint
 import           Mci.StraightLine.Syntax
 import           Protolude
