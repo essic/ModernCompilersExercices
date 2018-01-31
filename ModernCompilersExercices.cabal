@@ -20,8 +20,10 @@ library
                        , Mci.StraightLine.PrettyPrint
   other-modules:       Mci.Prelude
   build-depends:       base >= 4.7 && < 5
-                     , protolude >= 0.1.6 && < 0.2
+                     , containers >= 0.5.7.1
                      , formatting
+                     , mtl >= 2.2.1
+                     , protolude >= 0.1.6 && < 0.2
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude
 
@@ -29,8 +31,10 @@ executable ModernCompilersExercices-exe
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , ModernCompilersExercices
+  build-depends:       ModernCompilersExercices
+                     , base
+                     , containers >= 0.5.7.1
+                     , mtl >= 2.2.1
                      , protolude >= 0.1.6 && < 0.2
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude
@@ -39,8 +43,10 @@ test-suite ModernCompilersExercices-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
-  build-depends:       base
-                     , ModernCompilersExercices
+  build-depends:       ModernCompilersExercices
+                     , base
+                     , containers >= 0.5.7.1
+                     , mtl >= 2.2.1
                      , protolude >= 0.1.6 && < 0.2
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
