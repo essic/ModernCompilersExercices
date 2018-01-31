@@ -6,7 +6,6 @@ import  Mci.Prelude
 import qualified Data.Map.Strict as Map
 
 
-
 newtype Table = Table { unwrap :: Map.Map Id Int }
 
 type Id = Text

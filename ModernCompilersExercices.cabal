@@ -17,10 +17,11 @@ library
   hs-source-dirs:      src
   ghc-options:         -Wall
   exposed-modules:     Mci.StraightLine.Syntax
-                       , Mci.StraightLine.PrettyPrint
+                     , Mci.StraightLine.PrettyPrint
+                       Mci.StraightLine.Types
+
   other-modules:       Mci.Prelude
   build-depends:       base >= 4.7 && < 5
-                     , containers >= 0.5.7.1
                      , containers >= 0.5.7.1
                      , formatting
                      , mtl >= 2.2.1
@@ -35,8 +36,8 @@ executable ModernCompilersExercices-exe
   build-depends:       ModernCompilersExercices
                      , base
                      , containers >= 0.5.7.1
-                     , containers >= 0.5.7.1
                      , mtl >= 2.2.1
+                     , formatting
                      , protolude >= 0.1.6 && < 0.2
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude
@@ -47,7 +48,6 @@ test-suite ModernCompilersExercices-test
   main-is:             Spec.hs
   build-depends:       ModernCompilersExercices
                      , base
-                     , containers >= 0.5.7.1
                      , containers >= 0.5.7.1
                      , mtl >= 2.2.1
                      , protolude >= 0.1.6 && < 0.2
