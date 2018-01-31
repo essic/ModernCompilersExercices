@@ -8,8 +8,8 @@ import Mci.StraightLine.Types
 import qualified Data.Map.Strict as Map
 import qualified Control.Monad.State.Strict as State
 
-evaluateWithInfo' :: Stm -> (Stm -> State.StateT Table IO () ) -> IO ()
-evaluateWithInfo' s interpretProgram = do
+evaluateWithInfo :: Stm -> (Stm -> State.StateT Table IO () ) -> IO ()
+evaluateWithInfo s interpretProgram = do
   putText "**** Start ****"
   putText . toSL $ F.format ( "-> " F.% F.text) (prettyStmSL s)
   State.evalStateT (interpretProgram s) $! Table Map.empty
@@ -18,9 +18,9 @@ evaluateWithInfo' s interpretProgram = do
 
 main :: IO ()
 main = do
-  evaluateWithInfo' prog  interpStm
-  evaluateWithInfo' prog2 interpStm
-  evaluateWithInfo' prog3 interpStm
+  evaluateWithInfo prog  interpStm
+  evaluateWithInfo prog2 interpStm
+  evaluateWithInfo prog3 interpStm
   where
     prog =
       CompoundStm
