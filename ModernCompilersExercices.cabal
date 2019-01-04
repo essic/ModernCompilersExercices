@@ -16,15 +16,15 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   ghc-options:         -Wall
-  exposed-modules:     Mci.StraightLine.Syntax
+  exposed-modules:       Mci.StraightLine.Syntax
                        , Mci.StraightLine.PrettyPrint
                        , Mci.StraightLine.Interpretor
                        , Mci.StraightLine.Utils
-  other-modules:        Mci.Prelude
-                       ,Mci.StraightLine.Exercices
-  build-depends:       base >= 4.7 && < 5
-                     , protolude >= 0.1.6 && < 0.2
+                       , Mci.Prelude
+  other-modules:       Mci.StraightLine.Exercices
+  build-depends:       base >= 4.12.0.0
                      , formatting
+                     , relude
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude
 
@@ -32,10 +32,10 @@ executable ModernCompilersExercices-exe
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , ModernCompilersExercices
-                     , protolude >= 0.1.6 && < 0.2
+  build-depends:       ModernCompilersExercices
+                     , base >= 4.12.0.0
                      , formatting
+                     , relude
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude
 
@@ -43,9 +43,9 @@ test-suite ModernCompilersExercices-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
-  build-depends:       base
-                     , ModernCompilersExercices
-                     , protolude >= 0.1.6 && < 0.2
+  build-depends:       ModernCompilersExercices
+                     , base >= 4.12.0.0
+                     , relude
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude

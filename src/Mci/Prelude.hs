@@ -1,5 +1,6 @@
 module Mci.Prelude
-    ( module Exports
+    (
+       module Relude
     ) where
 
-import           Protolude as Exports
+import           Relude

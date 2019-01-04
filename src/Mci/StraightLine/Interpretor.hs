@@ -25,9 +25,9 @@ interpStm ((CompoundStm s1 s2),t) = do
   t2 <- interpStm (s2,t1)
   pure t2
 
-interpStm ((AssignStm id expr),t) = do
+interpStm ((AssignStm lbl expr),t) = do
   (val,t1) <- interpExp (expr,t)
-  pure $ update t1 (id,val)
+  pure $ update t1 (lbl, val)
   where
     update :: Table -> (Id,Int) -> Table
     update t' e =
@@ -47,14 +47,14 @@ interpExp :: (Exp, Table) -> IO (Int, Table)
 interpExp (NumExp v, t) =
   pure (v, t)
 
-interpExp (IdExp id, t) =
-  pure (lookup (unwrap t,id), t)
+interpExp (IdExp lbl, t) =
+  pure (lookup (unwrap t,lbl), t)
   where
     lookup :: ([(Id,Int)],Id) -> Int
     lookup ([],_) = 0
     lookup (x:xt,id')
       | fst x == id' = snd x
-      | otherwise = lookup (xt,id)
+      | otherwise = lookup (xt,lbl)
 
 interpExp ( (OpExp exp1 op exp2),t) = do
   (v1,t1) <- interpExp (exp1, t)

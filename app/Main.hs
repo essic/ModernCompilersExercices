@@ -1,15 +1,15 @@
 module Main where
 
 import qualified Formatting                   as F
+import           Mci.Prelude
 import           Mci.StraightLine.Interpretor
 import           Mci.StraightLine.PrettyPrint
 import           Mci.StraightLine.Syntax
-import           Protolude
 
 evaluateWithInfo :: Stm -> (Stm -> IO () ) -> IO ()
 evaluateWithInfo s interpretProgram = do
   putText "**** Start ****"
-  putText . toSL $ F.format ( "-> " F.% F.text) (prettyStmSL s)
+  putText . toText $ F.format ( "-> " F.% F.text) (prettyStmSL s)
   interpretProgram s
   putText "**** End ****"
   pure ()
